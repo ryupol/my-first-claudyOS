@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stock Briefs</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #1a1a1a; line-height: 1.6; padding: 2rem 1rem; }
+.container { max-width: 800px; margin: 0 auto; }
+h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.subtitle { color: #666; margin-bottom: 2rem; font-size: 0.9rem; }
+.gallery { display: grid; gap: 1rem; margin-bottom: 3rem; }
+.card { border: 1px solid #e0e0e0; border-radius: 8px; padding: 1.25rem; cursor: pointer; transition: border-color 0.2s; }
+.card:hover { border-color: #999; }
+.card-ticker { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.25rem; }
+.card-date { font-size: 0.8rem; color: #888; margin-bottom: 0.5rem; }
+.card-preview { font-size: 0.9rem; color: #444; }
+.brief { display: none; border-top: 2px solid #e0e0e0; padding-top: 2rem; margin-top: 1rem; }
+.brief.active { display: block; }
+.brief h1 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+.brief h2 { font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #333; }
+.brief p { margin-bottom: 0.75rem; }
+.brief ul { margin-left: 1.25rem; margin-bottom: 0.75rem; }
+.brief li { margin-bottom: 0.4rem; }
+.brief strong { color: #1a1a1a; }
+.brief .note { font-size: 0.85rem; color: #666; font-style: italic; margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1rem; }
+.back-btn { display: inline-block; margin-bottom: 1rem; font-size: 0.9rem; color: #0066cc; cursor: pointer; border: none; background: none; padding: 0; }
+.back-btn:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Stock Briefs</h1>
+<p class="subtitle">Research summaries — not investment advice</p>
+
+<div id="gallery" class="gallery">
+  <div class="card" onclick="showBrief('aapl')">
+    <div class="card-ticker">AAPL</div>
+    <div class="card-date">2026-05</div>
+    <div class="card-preview">Apple ออกแบบ ผลิต และขายฮาร์ดแวร์ (iPhone, Mac, iPad, Apple Watch, AirPods) พร้อมบริการดิจิทัล รายได้หลักยังมาจาก iPhone แต่ Services กำลังเป็น growth engine ที่ margin สูงกว่ามาก</div>
+  </div>
+  <div class="card" onclick="showBrief('nvda')">
+    <div class="card-ticker">NVDA</div>
+    <div class="card-date">2026-05-17</div>
+    <div class="card-preview">NVIDIA ออกแบบและขาย GPU ที่ตอนนี้กลายเป็น compute engine หลักสำหรับ AI training และ inference ลูกค้าหลักคือ hyperscaler และ enterprise ที่สร้าง AI infrastructure</div>
+  </div>
+  <div class="card" onclick="showBrief('googl')">
+    <div class="card-ticker">GOOGL</div>
+    <div class="card-date">2026-05-17</div>
+    <div class="card-preview">Alphabet เป็นบริษัทแม่ของ Google ซึ่งทำรายได้หลักจากโฆษณาดิจิทัล (Search, YouTube) และ cloud computing (Google Cloud) นอกจากนี้ยังมี hardware, Android, และ moonshot อย่าง Waymo กับ DeepMind</div>
+  </div>
+</div>
+
+<!-- AAPL Brief -->
+<div id="brief-aapl" class="brief">
+  <button class="back-btn" onclick="hideBrief('aapl')">&larr; Back to gallery</button>
+  <h1>AAPL — Apple Inc.</h1>
+
+  <h2>1. Company snapshot</h2>
+  <p>Apple ออกแบบ ผลิต และขายฮาร์ดแวร์ (iPhone, Mac, iPad, Apple Watch, AirPods) พร้อมบริการดิจิทัล (App Store, iCloud, Apple Music, Apple TV+, Apple Pay, AppleCare) รายได้หลักยังมาจาก iPhone แต่ Services กำลังเป็น growth engine ที่ margin สูงกว่ามาก ลูกค้าหลักคือผู้บริโภคทั่วโลกที่ยอมจ่ายเพื่อ ecosystem ที่ใช้งานง่าย บริษัทรายงาน 5 geographic segments: Americas, Europe, Greater China, Japan, Rest of Asia Pacific — distribution แบ่งเป็น 37% direct / 63% indirect (carriers, retailers, wholesalers)</p>
+
+  <h2>2. Fundamentals signal</h2>
+  <ul>
+    <li>Revenue trend: Q2 FY2026 revenue $111.2B (+17% YoY) ทำ March record — growth กลับมาเร่งตัวจริงหลัง plateau ช่วง FY2023-24</li>
+    <li>Margin trend: Company gross margin 49.3%, Services gross margin 76.7% — mix shift ไปทาง Services ยังดัน margin รวม แต่ memory costs เริ่มกดดัน product margin</li>
+    <li>Balance sheet: Net cash $62B ณ สิ้น Q2 FY2026 — ยกเลิก net cash neutral target</li>
+    <li>Capital allocation: Buyback เพิ่ม $100B + dividend +4% — คืนเงินผู้ถือหุ้นรวมเกิน $1T ตั้งแต่เริ่มโปรแกรม</li>
+    <li>R&D เร่งตัว significantly YoY — ลงทุนหนักใน AI/silicon</li>
+  </ul>
+
+  <h2>3. Latest earnings</h2>
+  <p>อิงจาก Q2 FY2026 earnings call (Jan-Mar 2026):</p>
+  <ul>
+    <li>Revenue $111.2B (+17% YoY) March record ทุก geographic segment โตเป็น double digits รวมถึง Greater China +28%</li>
+    <li>iPhone $57B (+22% YoY) — iPhone 17 family เป็น lineup ที่ขายดีที่สุดในประวัติศาสตร์ Apple</li>
+    <li>Services ทำ all-time high $31B (+16% YoY) โต double digits ทั้ง developed และ emerging markets</li>
+    <li>CEO transition: Tim Cook จะเป็น Executive Chairman 1 ก.ย. 2026 โดย John Ternus ขึ้นเป็น CEO</li>
+    <li>Guidance Q3 FY2026: revenue โต 14-17% YoY, gross margin 47.5-48.5%</li>
+  </ul>
+
+  <h2>4. Bull case / Bear case</h2>
+  <p><strong>Bull case:</strong></p>
+  <ul>
+    <li>Services flywheel: installed base 2.5+ พันล้านเครื่อง ทุกเครื่องจ่าย recurring revenue ที่ gross margin 76.7% — Switching Costs ทำงานจริง</li>
+    <li>iPhone 17 + MacBook Neo สร้าง upgrade cycle ที่ work แล้ว: iPhone โต 22%, Mac ทำ record</li>
+    <li>Analyst sentiment เชิงบวก: Tigress $375, Evercore ISI $365, Wedbush $400</li>
+  </ul>
+  <p><strong>Bear case:</strong></p>
+  <ul>
+    <li>Memory cost pressure: management เตือนว่าหลัง June quarter memory costs จะกระทบมากขึ้น</li>
+    <li>CEO transition risk: Tim Cook ออก 1 ก.ย. 2026 — transition ไม่มี guarantee ว่า smooth</li>
+    <li>Supply constraint บน Mac + China/tariff risk จาก manufacturing ที่กระจุก</li>
+  </ul>
+
+  <h2>5. Kill conditions</h2>
+  <ul>
+    <li>Services revenue growth ชะลอต่ำกว่า 10% YoY ติดกัน 2+ quarters</li>
+    <li>John Ternus เปลี่ยน financial discipline: ลด buyback, ทำ M&A ไม่สมเหตุ, capital allocation เปลี่ยนทิศ</li>
+    <li>Gross margin หลุดต่ำกว่า 45% ติดกัน 2+ quarters โดยไม่มี plan แก้</li>
+  </ul>
+
+  <h2>6. What to ask before owning it</h2>
+  <ul>
+    <li>CEO กำลังจะเปลี่ยน — ผมเชื่อมั่นใน John Ternus แค่ไหน?</li>
+    <li>Memory costs กำลังกดดัน margin — ผมโอเคถือหุ้นที่ margin อาจหดลง 2-3 quarters ไหม?</li>
+    <li>Revenue โต 17% แต่มี FX tailwind + iPhone 17 cycle — ถ้า cycle หมดแล้ว revenue กลับมาโตแค่ single digit ผมจะ panic ไหม?</li>
+    <li>AAPL เทรดที่ ~$300 market cap $4.4T — premium ที่จ่ายยังสมเหตุสมผลไหม?</li>
+    <li>ผมมี exposure กับ Apple ผ่าน index fund อยู่แล้วหรือเปล่า? ถ้าถือเพิ่ม concentration risk สูงเกินไปไหม?</li>
+  </ul>
+
+  <p class="note">Brief นี้เป็นสรุปข้อมูลเพื่อการศึกษา ไม่ใช่คำแนะนำซื้อขาย</p>
+</div>
+
+<!-- NVDA Brief -->
+<div id="brief-nvda" class="brief">
+  <button class="back-btn" onclick="hideBrief('nvda')">&larr; Back to gallery</button>
+  <h1>NVDA — NVIDIA Corporation</h1>
+
+  <h2>1. Company snapshot</h2>
+  <p>NVIDIA ออกแบบและขาย GPU (Graphics Processing Unit) ที่ตอนนี้กลายเป็น compute engine หลักสำหรับ AI training และ inference ลูกค้าหลักคือ hyperscaler (Microsoft, Google, Amazon, Meta) และ enterprise ที่สร้าง AI infrastructure รายได้หลักมาจาก Data Center segment ซึ่งโตจนกลายเป็นสัดส่วนเกิน 80% ของรายได้รวม นอกจากนี้ยังมีรายได้จาก Gaming, Professional Visualization, และ Automotive แต่เล็กลงเรื่อยๆ เมื่อเทียบกับ Data Center</p>
+
+  <h2>2. Fundamentals signal</h2>
+  <ul>
+    <li>Revenue growth เร่งตัวแรงมากในช่วง 2-3 ปีที่ผ่านมาจาก AI demand (ตัวเลขตรวจสอบใน 10-K ล่าสุด)</li>
+    <li>Gross margin อยู่ระดับสูงมาก (70%+) เพราะ GPU สำหรับ AI มี pricing power สูง — แต่ต้องดูว่า margin จะถูกกดจาก custom chip competition หรือไม่</li>
+    <li>Balance sheet แข็งแกร่ง มี net cash position ไม่มี debt concern</li>
+    <li>Capital allocation เน้น R&D หนัก + buyback สม่ำเสมอ + เริ่มลงทุน strategic stakes (CoreWeave, Coherent)</li>
+  </ul>
+
+  <h2>3. Latest earnings</h2>
+  <p>ไม่มี earnings transcript ใน sources/NVDA/ — skip section นี้หรือ user ใส่ source ก่อน</p>
+
+  <h2>4. Bull case / Bear case</h2>
+  <p><strong>Bull case:</strong></p>
+  <ul>
+    <li>AI infrastructure spending ยังอยู่ใน early innings — NVIDIA อยู่ในตำแหน่ง Cornered Resource (CUDA ecosystem + developer lock-in) ที่คู่แข่งตามยาก</li>
+    <li>การขยาย TAM เข้า inference, sovereign AI, และ robotics สร้าง growth runway ใหม่</li>
+    <li>Analyst consensus ขยับ PT ขึ้นต่อเนื่อง (Wells Fargo $315, TD Cowen/UBS $275)</li>
+  </ul>
+  <p><strong>Bear case:</strong></p>
+  <ul>
+    <li>Customer concentration สูงมาก — ถ้า hyperscaler 2-3 รายชะลอ capex พร้อมกัน revenue โดนหนัก</li>
+    <li>Custom silicon (Google TPU, Amazon Trainium, Microsoft Maia) อาจกัด market share ใน inference</li>
+    <li>Valuation อิง growth rate ที่สูงมาก ถ้า growth decelerate multiple อาจหดแรง (de-rating risk)</li>
+  </ul>
+
+  <h2>5. Kill conditions</h2>
+  <ul>
+    <li>Data Center revenue growth ชะลอลงต่ำกว่า 20% YoY ติด 2 quarter</li>
+    <li>Gross margin หลุด 65% ต่อเนื่อง — pricing power ถูก erode</li>
+    <li>ลูกค้า top-3 (Microsoft/Google/Amazon) ประกาศลด NVIDIA allocation เพื่อเปลี่ยนไปใช้ custom chip</li>
+  </ul>
+
+  <h2>6. What to ask before owning it</h2>
+  <ul>
+    <li>ผมเข้าใจหรือยังว่า NVIDIA กำลังขาย "พลั่วขุดทอง" ในยุค AI — ถ้า gold rush จบ demand จะเป็นยังไง?</li>
+    <li>ถ้า hyperscaler ตัดสินใจ in-house chip แทน GPU ผมจะรู้ตัวเร็วพอไหม? ดูจาก signal อะไร?</li>
+    <li>ราคาที่จะซื้อ imply growth rate เท่าไหร่ — เชื่อว่า NVIDIA โตได้ระดับนั้นอีกกี่ปี?</li>
+    <li>ผมแยกได้ไหมระหว่าง "บริษัทดี" กับ "ราคาดี"?</li>
+    <li>ถ้าหุ้นลง 40% จาก peak ผมจะถือต่อได้ไหม หรือจะ panic sell?</li>
+  </ul>
+
+  <p class="note">Sources: market-pulse agent (WebSearch 2026-05-17). ไม่มีไฟล์ใน sources/NVDA/ สำหรับ 10-K และ earnings call.</p>
+</div>
+
+<!-- GOOGL Brief -->
+<div id="brief-googl" class="brief">
+  <button class="back-btn" onclick="hideBrief('googl')">&larr; Back to gallery</button>
+  <h1>GOOGL — Alphabet Inc.</h1>
+
+  <h2>What the company does</h2>
+  <p>Alphabet เป็นบริษัทแม่ของ Google ซึ่งทำรายได้หลักจากโฆษณาดิจิทัล (Search, YouTube) และ cloud computing (Google Cloud) นอกจากนี้ยังมีธุรกิจ hardware (Pixel, Nest), ระบบปฏิบัติการ Android, และโปรเจค moonshot อย่าง Waymo (รถขับเอง) กับ DeepMind (AI research) บริษัทมี Network Economies แข็งมากจาก Search และ YouTube ที่คนใช้เป็นพันล้านคนต่อวัน</p>
+
+  <h2>Latest earnings (Q1 2025)</h2>
+  <ul>
+    <li>Revenue รวม $90.2B (+12% YoY) — Search ยังเป็นตัวหลักที่โตสม่ำเสมอ</li>
+    <li>Google Cloud revenue $12.3B (+28% YoY) — เริ่มทำกำไรต่อเนื่อง operating margin ขยับขึ้นชัด</li>
+    <li>YouTube ads revenue $8.9B (+10% YoY) — Shorts monetization ดีขึ้นแต่ยังไม่เท่า long-form</li>
+    <li>Operating income $30.6B — margin ปรับตัวดีขึ้นจากการลดต้นทุนและ layoffs ปีก่อน</li>
+    <li>AI integration — Gemini models ถูกฝังเข้า Search, Workspace, Cloud ทุกผลิตภัณฑ์ CapEx สูงขึ้นมากเพื่อ AI infra</li>
+  </ul>
+  <p style="font-size:0.85rem;color:#888;">ตัวเลขอ้างอิงจาก training knowledge (May 2025) — ควรตรวจสอบกับแหล่งข้อมูลจริง</p>
+
+  <h2>Bull case</h2>
+  <ul>
+    <li>AI leader ตัวจริง — มี DeepMind, TPU, Gemini models, และ data มหาศาลจาก Search/YouTube</li>
+    <li>Cloud โตเร็วและเริ่มกำไร — GCP growth rate สูงกว่า AWS, มี AI/ML tooling ที่แข็ง</li>
+    <li>Revenue กระจายตัวดีขึ้น — Cloud + YouTube + subscriptions โตลด concentration risk</li>
+  </ul>
+
+  <h2>Bear case</h2>
+  <ul>
+    <li>Antitrust risk จริงจัง — DOJ ชนะคดี search monopoly อาจถูกบังคับแยกธุรกิจหรือเปิด default search deals</li>
+    <li>AI อาจ disrupt Search เอง — ถ้าคนเปลี่ยนพฤติกรรมไปใช้ AI chatbot แทน Google Search, ad model ถูกกัดกร่อน</li>
+    <li>CapEx สูงลิ่ว $50B+/ปี — ถ้า ROI ไม่มาตามคาด จะกดดัน FCF และ margin ระยะกลาง</li>
+  </ul>
+
+  <h2>What to ask before owning it</h2>
+  <ul>
+    <li>Search ยังจะเป็น cash cow ได้อีกนานแค่ไหน? ถ้า AI chatbot เปลี่ยนพฤติกรรมการค้นหา Alphabet จะ monetize ยังไง?</li>
+    <li>Antitrust จะจบยังไง? worst case ถูกบังคับแยกธุรกิจ valuation จะเปลี่ยนไปมากแค่ไหน?</li>
+    <li>Cloud จะแข่งกับ AWS/Azure ได้จริงมั้ย? Gemini จะเป็น differentiator ที่ดึง enterprise ได้จริงหรือแค่ marketing?</li>
+    <li>CapEx $50B+/ปี ลง AI infra จะคุ้มค่ามั้ย? ถ้า open-source models ตามทัน proprietary จะเสียเปล่าหรือเปล่า?</li>
+    <li>Sundar Pichai บริหาร 10 ปี ตื่นเรื่อง AI แล้ว แต่ sustain ได้มั้ย?</li>
+  </ul>
+
+  <p class="note">This is a research summary, not investment advice.</p>
+</div>
+
+</div>
+
+<script>
+function showBrief(ticker) {
+  document.getElementById('gallery').style.display = 'none';
+  document.getElementById('brief-' + ticker).classList.add('active');
+}
+function hideBrief(ticker) {
+  document.getElementById('brief-' + ticker).classList.remove('active');
+  document.getElementById('gallery').style.display = 'grid';
+}
+</script>
+</body>
+</html>

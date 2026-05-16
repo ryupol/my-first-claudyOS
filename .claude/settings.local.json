@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p /Users/pmaniratanap/Desktop/my-first-project/.claude/skills/company-brief)",
+      "Skill(brief)",
+      "Skill(brief:*)",
+      "WebFetch(domain:finance.yahoo.com)",
+      "WebFetch(domain:www.google.com)",
+      "WebFetch(domain:www.marketwatch.com)",
+      "WebFetch(domain:seekingalpha.com)",
+      "WebFetch(domain:www.reuters.com)",
+      "WebFetch(domain:www.cnbc.com)",
+      "WebFetch(domain:www.benzinga.com)",
+      "WebFetch(domain:stockanalysis.com)",
+      "WebFetch(domain:www.investing.com)"
+    ],
+    "additionalDirectories": [
+      "/Users/pmaniratanap/Desktop/my-first-project/.claude/skills"
+    ]
+  }
+}
